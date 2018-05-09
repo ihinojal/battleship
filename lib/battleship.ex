@@ -79,6 +79,8 @@ defmodule Battleship do
       {:ok, #PID<4.5.6>}
 
   """
+  @spec add_player([[{integer,integer}]], [{atom, any}]) :: 
+    {:ok, pid}
   defdelegate add_player(ship_def, options \\ []),
     to: Battleship.GameDispatcher
 
@@ -111,6 +113,7 @@ defmodule Battleship do
     - `player_id`. Is usually the PID of the player, but can by an atom or any
       object.
   """
+  @spec fire(pid, {integer,integer}, any) :: :ok
   defdelegate fire(game_pid, position, player_id),
     to: Battleship.Game
 
